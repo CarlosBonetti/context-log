@@ -6,7 +6,7 @@ It defines a file-based convention for organizing events from any source — mee
 
 1. **Daily logs** — every event from a single day, individually listed with metadata and a narrative summary.
 2. **Weekly summaries** — synthesize a week's daily logs into themes, progress, and outlook.
-3. **Running summary** — a living "state of the world" briefing that stays under ~200 lines, no matter how much history accumulates.
+3. **Running summary** — a living "state of the world" briefing that compresses older context as history accumulates.
 
 Each tracked stream of activity gets its own isolated **bucket** (a project, a 1:1, a team, an initiative, etc.), with its own config, logs, and summaries that never bleed into each other.
 
