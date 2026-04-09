@@ -9,19 +9,11 @@
 ## Current State
 
 _A standalone briefing. Someone reading only this section should understand the current
-situation without any other file. Rewrite this section entirely each time you update._
-
-**Active Workstreams**
-- [Workstream/topic]: [current status, owner, next milestone]
-
-**Blockers**
-- [What's blocked, who owns unblocking, what's needed]
-
-**Open Questions**
-- [Unanswered questions that need resolution]
-
-**Upcoming**
-- [Next milestones, deadlines, scheduled events]
+situation without any other file. Rewrite this section entirely each time you update.
+Use whatever structure and sections fit the bucket's context -- there is no fixed format.
+The only requirement is that it should be easily scannable using markdown formatting
+(headings, bold, bullet points, etc.). Also take into account any instructions in the
+bucket's config.md when deciding structure and emphasis._
 
 ---
 

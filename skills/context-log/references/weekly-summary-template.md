@@ -20,9 +20,9 @@ _Only include links for days that have daily log files._
 
 ## Week Summary
 
-_A narrative synthesis of the week (10-25 lines). Focus on themes and progress, not a
-day-by-day replay. What moved forward? What stalled? What new information surfaced?
-What's the trajectory heading into next week?_
+_A narrative synthesis of the week. Focus on themes and progress, not a day-by-day replay.
+What moved forward? What stalled? What new information surfaced? What's the trajectory
+heading into next week? Be as long or short as needed to capture the week's substance._
 
 [Summary goes here]
 

@@ -8,9 +8,10 @@
 
 ## Daily Summary
 
-_A short narrative (5-15 lines) synthesizing the day's activity in the context of this
-bucket. Don't just list what happened -- explain what it means. Reference the running
-summary context: what moved forward, what's new, what changed, what's blocked._
+_A narrative synthesizing the day's activity in the context of this bucket. Don't just
+list what happened -- explain what it means. Reference the running summary context: what
+moved forward, what's new, what changed, what's blocked. Be as long or short as needed
+to consolidate all important events from the day._
 
 [Summary goes here]
 

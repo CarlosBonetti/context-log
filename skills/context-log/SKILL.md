@@ -156,12 +156,12 @@ The daily log has two parts:
 - A metadata block with IDs/URLs sufficient to re-fetch the full event via its connector
   (e.g., Fathom recording_id, PR URL, Drive doc ID, Slack thread permalink)
 
-**Daily Summary** -- A short narrative (aim for 5-15 lines) of the day's happenings in the
-context of this bucket. This is where you synthesize across events: "The DSW focused on auth
-migration planning. Jordan opened PR #142 with the initial schema changes, which Sarah started
-reviewing. The client asked about timeline in Slack and was told Sprint 14." The summary
-should reference the running summary context to highlight what moved forward, what's new,
-and what changed.
+**Daily Summary** -- A narrative of the day's happenings in the context of this bucket. This
+is where you synthesize across events: "The DSW focused on auth migration planning. Jordan
+opened PR #142 with the initial schema changes, which Sarah started reviewing. The client
+asked about timeline in Slack and was told Sprint 14." Be as long or short as needed to
+consolidate all important events from the day. The summary should reference the running
+summary context to highlight what moved forward, what's new, and what changed.
 
 If the daily log already exists (e.g., the user processed morning events and is now adding
 afternoon ones), append the new events to the inventory and rewrite the daily summary to
