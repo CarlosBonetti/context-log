@@ -12,35 +12,33 @@
 
 ## Event Sources
 
-_Each source declares: which connector tool to use, how to find relevant events, and any
-filtering criteria. Only include sources that are actually connected and relevant._
+_Only include sources the user asked for. Each source gets its own subsection with
+whatever details are needed for the respective connector to find only the relevant
+events (search queries, channel names, repo filters, title keywords, etc.). The format
+and level of detail will vary by source -- include exactly what's needed, no more.
+The examples below are illustrative only -- do not include them in the actual config._
 
-### Fathom Meetings
-- **Enabled**: [yes | no]
-- **Search patterns**: [meeting title keywords to match, e.g., "Atlas DSW", "Atlas Demo"]
-- **Filters**: [optional: recorded_by, teams, domains]
+**Examples:**
 
-### GitHub
-- **Enabled**: [yes | no]
-- **Repositories**: [org/repo names to track]
-- **Event types**: [PRs, issues, reviews, merges -- which ones matter for this bucket]
-
-### Google Drive
-- **Enabled**: [yes | no]
-- **Search queries**: [keywords, folder names, or doc title patterns]
-- **File types**: [docs, sheets, slides -- which ones to look for]
-
-### Slack
-- **Enabled**: [yes | no]
-- **Channels**: [channel names to monitor, e.g., "#project-atlas", "#atlas-eng"]
-- **Search queries**: [additional keyword filters if needed]
-
-### Other: [Source Name]
-- **Enabled**: [yes | no]
-- **Tool**: [which MCP tool to use]
-- **How to find events**: [describe the search/list approach]
-
-_Repeat the "Other" block for any additional sources._
+> ### Fathom Meetings
+>
+> - **Search patterns**: "Atlas DSW", "Atlas Demo"
+> - **Filters**: recorded_by: jordan@acme.com
+>
+> ### GitHub
+>
+> - **Repositories**: acme/atlas-backend, acme/atlas-frontend
+> - **Event types**: PRs, issues, reviews
+>
+> ### Google Drive
+>
+> - **Search queries**: "Project Atlas" in folder "Engineering/Atlas"
+> - **File types**: docs, sheets
+>
+> ### Slack
+>
+> - **Channels**: #project-atlas, #atlas-eng
+> - **Search queries**: "atlas" in #engineering-general
 
 ## Notes
 
