@@ -39,8 +39,9 @@ The only rule is that a bucket should represent a single coherent context. If yo
 wanting to filter events by two unrelated concerns within one bucket, that's a sign it should
 be two buckets.
 
-Each bucket contains a `config.md` that declares which event sources to pull from and how to
-identify relevant events.
+Each bucket contains a `config.md` that declares which event sources to pull from, how to
+identify relevant events, and any special instructions from the user that should be followed
+when pulling events or writing logs and summaries for that bucket.
 
 ### Events
 
@@ -148,13 +149,9 @@ Read `references/daily-log-template.md` for the format.
 
 The daily log has two parts:
 
-**Event Inventory** -- Every event listed individually with:
-- Event type and source (e.g., "Fathom: DSW Meeting", "GitHub: PR #142")
-- Timestamp
-- Participants (where applicable)
-- A 2-4 line summary of what happened
-- A metadata block with IDs/URLs sufficient to re-fetch the full event via its connector
-  (e.g., Fathom recording_id, PR URL, Drive doc ID, Slack thread permalink)
+**Event Inventory** -- Every event listed individually with a heading and a summary of what
+happened, plus the metadata the connector needs to find this specific event again (e.g.,
+recording ID, PR URL, doc ID, thread permalink).
 
 **Daily Summary** -- A narrative of the day's happenings in the context of this bucket. This
 is where you synthesize across events: "The DSW focused on auth migration planning. Jordan
@@ -208,8 +205,6 @@ sections:
 4. **Archived Context** -- Condensed older material. When weeks roll out of Recent Weeks,
    summarize and merge them here. Keep only what's still relevant to current work. If this
    section exceeds ~40 lines, condense further.
-
-The running summary should stay under ~200 lines total.
 
 ### Processing Multiple Days
 

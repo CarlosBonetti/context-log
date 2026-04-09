@@ -21,22 +21,10 @@ to consolidate all important events from the day._
 
 ### [HH:MM] [Source]: [Event Title]
 
-- **Type**: [meeting | pull-request | document | message | review | other]
-- **Participants**: [who was involved]
-- **Summary**: [2-4 lines describing what happened and why it matters]
-
-<details>
-<summary>Re-fetch metadata</summary>
-
-- Source: [Fathom | GitHub | Google Drive | Slack | etc.]
-- [Key identifier, varies by source:]
-  - Fathom: `recording_id: abc123`
-  - GitHub: `url: https://github.com/org/repo/pull/142`
-  - Google Drive: `doc_id: 1a2b3c...`
-  - Slack: `channel: #project-atlas` / `thread_ts: 1234567890.123456`
-- Fetched at: [ISO timestamp of when this event was pulled]
-
-</details>
+_Each event should include a summary of what happened -- as short or as long as needed
+to convey all the important information -- and the metadata the connector needs to find
+this specific event again (e.g., recording ID, PR URL, doc ID, thread permalink).
+Format freely -- no rigid structure required._
 
 ---
 
