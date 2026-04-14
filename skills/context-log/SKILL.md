@@ -75,21 +75,21 @@ distill patterns. The running summary is the executive briefing.
 
 ## Folder Structure
 
-All context logs live under a root folder the user selects. The structure:
+All context logs live under a root folder the user selects. Each bucket is a direct
+subdirectory of that root — do not add intermediate folders like `context-log/` or `buckets/`.
 
 ```
-context-log/
-  buckets/
-    <slug>/
-      config.md
-      running-summary.md
-      weekly/
-        2026-06-02.md          # Monday of that week
-        2026-06-09.md
-      daily/
-        2026-06-02.md
-        2026-06-03.md
-        2026-06-04.md
+<root>/
+  <slug>/
+    config.md
+    running-summary.md
+    weekly/
+      2026-06-02.md          # Monday of that week
+      2026-06-09.md
+    daily/
+      2026-06-02.md
+      2026-06-03.md
+      2026-06-04.md
 ```
 
 Slugs are lowercase, hyphen-separated. Use a short prefix that hints at the bucket type

@@ -44,18 +44,17 @@ Ask things like "what's the latest on project Atlas?" or "catch me up on my 1:1 
 ## Folder structure
 
 ```
-context-log/
-  buckets/
-    project-atlas/
-      config.md
-      running-summary.md
-      weekly/
-        2026-06-02.md
-        2026-06-09.md
-      daily/
-        2026-06-02.md
-        2026-06-03.md
-        2026-06-04.md
+<root>/
+  project-atlas/
+    config.md
+    running-summary.md
+    weekly/
+      2026-06-02.md
+      2026-06-09.md
+    daily/
+      2026-06-02.md
+      2026-06-03.md
+      2026-06-04.md
 ```
 
 ## Installation
