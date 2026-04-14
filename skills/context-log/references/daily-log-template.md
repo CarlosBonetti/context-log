@@ -11,7 +11,9 @@
 _A narrative synthesizing the day's activity in the context of this bucket. Don't just
 list what happened -- explain what it means. Reference the running summary context: what
 moved forward, what's new, what changed, what's blocked. Be as long or short as needed
-to consolidate all important events from the day._
+to consolidate all important events from the day. Use whatever structure fits the content,
+but it should be easily scannable using markdown formatting (headings, bold, bullet points,
+etc.)._
 
 [Summary goes here]
 

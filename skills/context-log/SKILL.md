@@ -158,7 +158,8 @@ is where you synthesize across events: "The DSW focused on auth migration planni
 opened PR #142 with the initial schema changes, which Sarah started reviewing. The client
 asked about timeline in Slack and was told Sprint 14." Be as long or short as needed to
 consolidate all important events from the day. The summary should reference the running
-summary context to highlight what moved forward, what's new, and what changed.
+summary context to highlight what moved forward, what's new, and what changed. Use markdown
+formatting (headings, bold, bullet points, etc.) to keep the summary easily scannable.
 
 If the daily log already exists (e.g., the user processed morning events and is now adding
 afternoon ones), append the new events to the inventory and rewrite the daily summary to
@@ -175,6 +176,7 @@ The weekly file:
 - Is named after the Monday of that week (e.g., `weekly/2026-06-02.md`)
 - Links to each daily log in that week using relative paths (e.g., `[Monday](../daily/2026-06-02.md)`)
 - Contains a weekly narrative summary that synthesizes themes, progress, blockers, and outlook
+  -- formatted for easy scanning using markdown (headings, bold, bullet points, etc.)
 - Highlights the most significant events/decisions of the week
 - Is more condensed than the sum of daily logs -- it should focus on what matters at the
   week-level rather than repeating every event

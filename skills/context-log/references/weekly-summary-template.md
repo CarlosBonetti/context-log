@@ -22,7 +22,9 @@ _Only include links for days that have daily log files._
 
 _A narrative synthesis of the week. Focus on themes and progress, not a day-by-day replay.
 What moved forward? What stalled? What new information surfaced? What's the trajectory
-heading into next week? Be as long or short as needed to capture the week's substance._
+heading into next week? Be as long or short as needed to capture the week's substance.
+Use whatever structure fits the content, but it should be easily scannable using markdown
+formatting (headings, bold, bullet points, etc.)._
 
 [Summary goes here]
 
