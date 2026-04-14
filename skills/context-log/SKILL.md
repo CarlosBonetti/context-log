@@ -19,25 +19,26 @@ description: >
 A convention-based skill that defines how to organize events from any source into a
 structured folder hierarchy -- daily logs, weekly summaries, and a rolling "state of the
 world" document -- so that the agent can build and maintain context-aware memory over time
-for any stream of activity you want to track.
+for any stream of activity the user wants to track.
 
 ## Core Concepts
 
 ### Buckets
 
 A bucket is an isolated context log environment that tracks one stream of activity over time.
-Buckets never share context with each other. What constitutes a bucket is up to you -- it's
-any scope where you want a unified, evolving understanding of what's happening. Common examples:
+Buckets never share context with each other. What constitutes a bucket is up to the user --
+it's any scope where they want a unified, evolving understanding of what's happening. Common
+examples:
 
 - A **project** (with its ceremonies, code activity, docs, and conversations)
 - A **1:1 relationship** with a specific person
 - A **client relationship** spanning multiple projects
-- A **team or workgroup** you want to track across its activities
+- A **team or workgroup** the user wants to track across its activities
 - A **topic or initiative** that cuts across other boundaries (e.g., "platform migration")
 
-The only rule is that a bucket should represent a single coherent context. If you find yourself
-wanting to filter events by two unrelated concerns within one bucket, that's a sign it should
-be two buckets.
+The only rule is that a bucket should represent a single coherent context. If the user wants
+to filter events by two unrelated concerns within one bucket, that's a sign it should be two
+buckets.
 
 Each bucket contains a `config.md` that declares which event sources to pull from, how to
 identify relevant events, and any special instructions from the user that should be followed
