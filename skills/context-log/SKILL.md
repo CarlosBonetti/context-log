@@ -73,6 +73,34 @@ Context compresses as it ages, flowing through three layers:
 Each layer is more condensed than the one below it. Daily logs are detailed. Weekly summaries
 distill patterns. The running summary is the executive briefing.
 
+### Reading Context: Top-Down Drill-Down
+
+Whenever a task involves a bucket -- reviewing state, answering questions, preparing for a
+meeting, writing a document, processing new events -- always load context top-down:
+
+1. **Always start with `running-summary.md`.** This is mandatory for every interaction with a
+   bucket, no exceptions. It gives you the current state, recent trajectory, and key decisions.
+
+2. **Pull weekly summaries when the task needs more depth.** If the user asks about a specific
+   time period, wants to understand how something evolved, or the running summary alone doesn't
+   give you enough to act on, read the relevant weekly files. Follow the relative links in the
+   running summary.
+
+3. **Pull daily logs when you need event-level detail.** If the user asks about a specific
+   event, meeting, PR, or conversation -- or the weekly summary references something you need
+   to understand fully -- drill into the daily log. Follow the relative links in the weekly
+   summary.
+
+4. **Re-fetch from the original source when full fidelity is needed.** Daily logs store
+   re-fetch metadata (recording IDs, PR URLs, doc IDs, thread permalinks). When the user needs
+   exact quotes, full transcripts, complete diffs, or raw data that the summary doesn't
+   capture, use the appropriate connector to fetch the original event.
+
+How far down you drill depends on what the user is asking. A quick status check may only need
+the running summary. Preparing a detailed report may require reading through weekly and daily
+files. Answering "what exactly did Jordan say about the timeline?" may require re-fetching the
+meeting transcript. Match the depth of your reading to the depth of the task.
+
 ## Folder Structure
 
 All context logs live under a root folder the user selects. Each bucket is a direct
@@ -218,14 +246,15 @@ just once when everything is processed.
 ## Workflow: Reviewing Current State
 
 When the user asks things like "what's the latest on project Atlas?" or "catch me up on
-my 1:1 with Jordan":
+my 1:1 with Jordan", follow the top-down drill-down pattern:
 
-1. Read the bucket's `running-summary.md`
+1. Read the bucket's `running-summary.md` (always -- this is the entry point)
 2. Present a concise verbal summary of the most important current items
-3. If the user asks for more detail on a specific topic, time period, or event:
-   - Read the relevant weekly or daily file (follow the relative links)
-   - For a specific event, use the metadata in the daily log to re-fetch details from
-     the original connector if needed
+3. Proactively drill deeper when the running summary isn't enough to fully address
+   what the user is asking -- don't wait for them to ask for more detail:
+   - Read relevant weekly files to cover a time period or understand how something evolved
+   - Read daily logs to get event-level specifics
+   - Re-fetch from the original source via connectors when exact details are needed
 
 ## Workflow: Creating a New Bucket
 
@@ -259,8 +288,9 @@ Handle it gracefully -- don't scold the user, just fill in the gaps.
   transcripts, diffs, or message bodies. The connector is always the source of truth.
 - **Always process chronologically.** Context builds forward in time.
 - **One bucket per context stream.** Don't mix unrelated activity streams in one bucket.
-- **The running summary is the entry point.** When you need to understand a bucket, start
-  there. Drill into weekly and daily files only when you need specifics.
+- **Always read top-down.** The running summary is the mandatory starting point for every
+  bucket interaction. Drill into weekly, daily, and original sources as the task demands
+  (see "Reading Context: Top-Down Drill-Down" above).
 - **Ask before creating buckets.** Confirm the name, type, and sources with the user.
 - **Graceful degradation.** If a connector isn't available or a source returns no results,
   continue with what you have. Note the gap but don't block the whole process.
