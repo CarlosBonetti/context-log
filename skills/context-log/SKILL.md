@@ -47,6 +47,7 @@ when pulling events or writing logs and summaries for that bucket.
 ### Events
 
 An event is any discrete unit of activity relevant to a bucket. Examples:
+
 - A Fathom meeting transcript (DSW, demo, daily, 1:1)
 - A GitHub pull request (opened, reviewed, merged)
 - A Google Drive document (created or significantly updated)
@@ -68,11 +69,16 @@ Context compresses as it ages, flowing through three layers:
    logs via relative links. Synthesizes the week's events into themes, progress, and outlook.
 
 3. **Running Summary** (`running-summary.md`) -- The living memory. References recent weekly
-   files via relative links. Provides a standalone briefing of current state, plus a decisions
-   log that persists across time.
+   files via relative links. Two kinds of content live here, and only these two: **fresh
+   knowledge** (what is happening right now and what is actively in flight) and **foundational
+   knowledge** (project goals, scope, team, durable decisions that still shape current work).
+   Stale tactical detail does NOT live here -- it is reachable via weekly and daily files.
 
 Each layer is more condensed than the one below it. Daily logs are detailed. Weekly summaries
-distill patterns. The running summary is the executive briefing.
+distill patterns. The running summary is the executive briefing -- short enough to fit easily
+in an agent's context and to be read end-to-end by a human in a few minutes (target ~200-300
+lines, ~3500-5000 tokens). If it grows past that, the next update MUST compress before it
+adds. The size constraint is not aesthetic; it is the point of this layer.
 
 ### Reading Context: Top-Down Drill-Down
 
@@ -202,6 +208,7 @@ ask for a weekly rollup, generate or update the weekly summary file.
 Read `references/weekly-summary-template.md` for the format.
 
 The weekly file:
+
 - Is named after the Monday of that week (e.g., `weekly/2026-06-02.md`)
 - Links to each daily log in that week using relative paths (e.g., `[Monday](../daily/2026-06-02.md)`)
 - Contains a weekly narrative summary that synthesizes themes, progress, blockers, and outlook
@@ -218,31 +225,84 @@ of what you processed earlier in the conversation -- always read the files.
 
 ### Step 6: Update the Running Summary
 
-Read `references/running-summary-template.md` for the format. The running summary has four
-sections:
+Read `references/running-summary-template.md` for the format. The running summary has five
+sections, each with a specific purpose. Treat the size budget (~200-300 lines, ~3500-5000
+tokens) as a hard constraint: if a section grows past its share, it must be compressed
+before anything new is added.
 
-1. **Current State** -- Rewrite entirely. A standalone briefing someone could read with zero
-   prior context: active workstreams, ownership, blockers, upcoming milestones, open questions.
-   Should make sense on its own without reading any other file.
+Reframing the goal: the running summary answers two questions only -- "what is this project
+for" (foundational) and "what is happening right now" (fresh). Anything that doesn't answer
+one of those does not belong here. Detailed history lives in weekly and daily files, which
+are one click away.
 
-2. **Recent Weeks** (last ~3-4 weeks) -- One entry per week, linking to the weekly file
-   (e.g., `[Week of Jun 2](weekly/2026-06-02.md)`). Each entry is 3-5 bullets summarizing
-   that week. When this section exceeds ~4 weeks, move the oldest entries to Archived Context.
+1. **Project Foundation** -- Edit only when foundations actually shift. The durable facts
+   about this bucket: mission/goal, scope, team and ownership, contract or timeline anchors,
+   primary success criteria. Should rarely change update-to-update. Aim for ~10-20 lines.
 
-3. **Key Decisions Log** -- Append-only, never deleted. When a meaningful decision is made
-   (technical direction, scope change, timeline shift, personnel change), add a dated entry.
-   Keep each to 1-2 lines.
+2. **Now** -- Rewrite entirely each update. What is actively in flight this week and the
+   next one or two; the immediate blockers; the focus for the current cycle; the next 1-2
+   milestones. This section is _only_ about the present and the near future. Aim for ~25-50
+   lines.
 
-4. **Archived Context** -- Condensed older material. When weeks roll out of Recent Weeks,
-   summarize and merge them here. Keep only what's still relevant to current work. If this
+3. **Recent Weeks** (last 3 weeks max) -- One entry per week, linking to the weekly file.
+   **Hard cap: 3-5 single-line bullets per week.** Each bullet is one line; no compound
+   bullets stuffed with parentheticals or PR/ticket numbers (those live in the weekly file).
+   When you add a new week, re-trim the older weeks; older entries should get shorter as
+   they age, not stay at original length. When this section exceeds 3 weeks, move the
+   oldest entry to Archived Context.
+
+4. **Key Decisions Log** -- Curated, not append-only. Captures decisions that still shape
+   current work. Each entry is 1-2 lines, dated. Rules:
+
+   - When a decision is superseded, mark it superseded inline and link to the replacement
+     decision; do not silently delete it.
+   - When a decision is older than ~8 weeks AND is no longer being cited in current work,
+     move it to Archived Context (or, if the bucket is large, to a `decisions-archive.md`
+     file in the bucket folder). The decision remains discoverable but does not bloat the
+     active log.
+   - Tactical implementation notes (which PR shipped what, which version was bumped) are
+     NOT decisions; do not log them here. A decision changes direction, scope, ownership,
+     timeline, or methodology.
+
+5. **Archived Context** -- Condensed older material. When weeks roll out of Recent Weeks,
+   collapse them into a single line or short paragraph and merge here. Same for retired
+   decisions. Keep only what's still relevant to understanding the current state. If this
    section exceeds ~40 lines, condense further.
+
+### Step 7: Pruning Pass (mandatory)
+
+After writing the new content in Step 6, re-read the entire running summary end-to-end and
+apply the following checks. **This step is not optional.** It is what prevents drift from
+"executive briefing" into "project encyclopedia."
+
+For each item currently in the file, ask:
+
+1. **Is it fresh or foundational?** If it is neither (e.g., a workstream that has shipped, a
+   bug that has been resolved, a milestone that has passed, a decision no longer cited),
+   remove it. The detail still exists in the weekly and daily logs, which are linked.
+2. **Has it moved in the last 2 weeks?** If a Now-section item hasn't moved in 2+ weeks and
+   is not foundational, drop it or fold it into a short "still pending" line.
+3. **Are resolved items being kept with strikethrough?** If yes, delete them. The resolution
+   belongs in the Decisions Log if it was a decision, otherwise in the weekly summary that
+   covers the week of resolution.
+4. **Is "Upcoming Milestones" actually upcoming?** If the section contains "Done [date]"
+   entries, remove them. Only future-dated items belong there.
+5. **Are Recent Weeks bullets one line each, capped at 5 per week?** If not, trim.
+6. **Total size check.** Roughly count lines. If the file is over budget (~300 lines), more
+   aggressive pruning is required before this update is considered complete. Compress
+   first, then add.
+
+If pruning produces a meaningfully shorter file, that is a successful update. The right
+mental model is gardening, not archiving: the file should feel lighter after each update,
+not heavier.
 
 ### Processing Multiple Days
 
 When processing a range (e.g., "process this week"), work through each day chronologically.
 Write each daily log, then generate the weekly summary once all days are done, then update
 the running summary once at the end. Don't update the running summary after each day --
-just once when everything is processed.
+just once when everything is processed. Run the Step 7 pruning pass exactly once, at the
+very end.
 
 ## Workflow: Reviewing Current State
 
@@ -283,6 +343,20 @@ than 1-2 weeks, the weekly layer may be stale. In this case:
 This can happen if the user processes events daily but doesn't always ask for a weekly rollup.
 Handle it gracefully -- don't scold the user, just fill in the gaps.
 
+## Workflow: Bucket Maintenance / Aggressive Re-prune
+
+If the running summary has clearly drifted past budget (e.g., it's 5x the target size, or
+the user explicitly asks to "clean up" / "prune" / "compress" the bucket's running summary),
+do a maintenance pass independent of any event processing:
+
+1. Read the running summary end-to-end.
+2. Identify content that should be removed entirely vs. moved to Archived Context vs. kept.
+3. Apply Step 7's checklist aggressively.
+4. Show the user the proposed shape (sections + approximate sizes) before rewriting; this
+   is a destructive operation in spirit even though older content is still recoverable
+   from weekly/daily files.
+5. Rewrite the file under budget.
+
 ## Important Notes
 
 - **No raw data storage.** Daily logs contain summaries and re-fetch metadata, not full
@@ -300,3 +374,5 @@ Handle it gracefully -- don't scold the user, just fill in the gaps.
 - **Daily log updates are additive.** If a daily log already exists and you're processing
   more events for the same day, append events and rewrite the summary -- don't discard
   what was already there.
+- **Running summary updates are subtractive first, then additive.** When updating, prune
+  before you write. The file should feel lighter after each update, not heavier.
